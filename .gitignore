@@ -1,0 +1,5 @@
+checker_linux
+push_swap
+*.txt
+.vscode
+*.o
