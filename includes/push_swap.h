@@ -17,9 +17,15 @@ typedef struct		s_stacks
 {
 	struct s_lst	*a;
 	struct s_lst	*b;
+	int				cont;
 }					t_stacks;
 
-void	operations(t_stacks *stacks, char *name);
+void	sort_5(t_stacks *stacks);
+void	sort_3(t_stacks *stacks);
+int		check_if_sorted(t_lst *stack);
+void	print_stacks(t_stacks *stacks);
+void    sort(t_stacks *stacks);
+void	operations(t_stacks *stacks, char *operations);
 int		check_arguments(t_lst **stack_a, char **argv);
 
 void	delete_last(t_lst **stack);

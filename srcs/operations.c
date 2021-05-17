@@ -68,22 +68,33 @@ void	ft_reverse_rotate(t_lst **stack)
 	}
 }
 
-void	operations(t_stacks *stacks, char *name)
+void	operations(t_stacks *stacks, char *operations)
 {
-	if (!ft_strncmp(name, "sa", 3) || !ft_strncmp(name, "ss", 3))
-		ft_swap(&stacks->a);
-	if (!ft_strncmp(name, "sb", 3) || !ft_strncmp(name, "ss", 3))
-		ft_swap(&stacks->b);
-	if (!ft_strncmp(name, "pa", 3))
-		ft_push(stacks, 'a');
-	else if (!ft_strncmp(name, "pb", 3))
-		ft_push(stacks, 'b');
-	if (!ft_strncmp(name, "ra", 3) || !ft_strncmp(name, "rr", 3))
-		ft_rotate(&stacks->a);
-	if (!ft_strncmp(name, "rb", 3) || !ft_strncmp(name, "rr", 3))
-		ft_rotate(&stacks->b);
-	if (!ft_strncmp(name, "rra", 4) || !ft_strncmp(name, "rrr", 4))
-		ft_reverse_rotate(&stacks->a);
-	if (!ft_strncmp(name, "rrb", 4) || !ft_strncmp(name, "rrr", 4))
-		ft_reverse_rotate(&stacks->b);
+	char	**names;
+	int		i;
+
+	names = ft_split(operations, ' ');
+	i = -1;
+	while (names[++i])
+	{
+	//	ft_putstr_fd(names[i], 1);
+	//	ft_putstr_fd("\n", 1);
+		stacks->cont++;
+		if (!ft_strncmp(names[i], "sa", 3) || !ft_strncmp(names[i], "ss", 3))
+			ft_swap(&stacks->a);
+		if (!ft_strncmp(names[i], "sb", 3) || !ft_strncmp(names[i], "ss", 3))
+			ft_swap(&stacks->b);
+		if (!ft_strncmp(names[i], "pa", 3))
+			ft_push(stacks, 'a');
+		else if (!ft_strncmp(names[i], "pb", 3))
+			ft_push(stacks, 'b');
+		if (!ft_strncmp(names[i], "ra", 3) || !ft_strncmp(names[i], "rr", 3))
+			ft_rotate(&stacks->a);
+		if (!ft_strncmp(names[i], "rb", 3) || !ft_strncmp(names[i], "rr", 3))
+			ft_rotate(&stacks->b);
+		if (!ft_strncmp(names[i], "rra", 4) || !ft_strncmp(names[i], "rrr", 4))
+			ft_reverse_rotate(&stacks->a);
+		if (!ft_strncmp(names[i], "rrb", 4) || !ft_strncmp(names[i], "rrr", 4))
+			ft_reverse_rotate(&stacks->b);
+	}
 }

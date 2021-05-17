@@ -15,34 +15,23 @@ void	print_stacks(t_stacks *stacks)
 	list_lenght(stacks->a);
 }
 
-void	operate(t_stacks *stacks)
-{
-	print_stacks(stacks);
-
-	operations(stacks, "sa");
-	operations(stacks, "pb");
-
-	print_stacks(stacks);
-
-	operations(stacks, "pb");
-	operations(stacks, "pb");
-	operations(stacks, "sa");
-	operations(stacks, "pa");
-	operations(stacks, "pa");
-	operations(stacks, "pa");
-
-	print_stacks(stacks);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stacks stacks;
 
 	stacks.a = NULL;
 	stacks.b = NULL;
+	stacks.cont = 0;
 	if (argc < 2 || !check_arguments(&stacks.a, argv))
 		return (0);
-
-	operate(&stacks);
+	if (check_if_sorted(stacks.a))
+		return (0);
+	if (argc == 4)
+		sort_3(&stacks);
+	else if (argc == 6)
+		sort_5(&stacks);
+	printf("\n*************** RESULT ***************\n");
+	list_lenght(stacks.a);
+	printf("cont: %d\n", stacks.cont);
 	clear_stacks(&stacks);
 }

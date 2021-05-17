@@ -1,5 +1,16 @@
 #include "../includes/push_swap.h"
 
+int		check_if_sorted(t_lst *stack)
+{
+	while (stack->next)
+	{
+		if (stack->content > stack->next->content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
 void	clear_lst(t_lst *stack)
 {
 	if (stack)
