@@ -11,6 +11,12 @@ int		check_if_sorted(t_lst *stack)
 	return (1);
 }
 
+void	exit_error(t_stacks *stacks)
+{
+	clear_stacks(stacks);
+	ft_putstr_fd(strerror(errno), 2);
+}
+
 void	clear_lst(t_lst *stack)
 {
 	if (stack)

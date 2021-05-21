@@ -3,4 +3,5 @@ push_swap
 *.txt
 .vscode
 *.o
+*.a
 *.sh

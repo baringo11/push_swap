@@ -7,6 +7,21 @@
 // 			--log-file=valgrind-out.txt \
 // 			./push_swap
 
+void	check_if_final_sorted(t_lst *a)
+{
+	int i = 0;
+	while (a->next)
+	{
+		if (a->content > a->next->content)
+		{
+			printf("ERROR INCORRECT SORT : n: %d in pos[%d]\n", a->content, i);
+			break;
+		}
+		i++;
+		a = a->next;
+	}
+}
+
 void	print_stacks(t_stacks *stacks)
 {
 	printf("\n***** STACK B ******\n");
@@ -22,6 +37,7 @@ int	main(int argc, char **argv)
 	stacks.a = NULL;
 	stacks.b = NULL;
 	stacks.cont = 0;
+	errno = 0;
 	if (argc < 2 || !check_arguments(&stacks.a, argv))
 		return (0);
 	if (check_if_sorted(stacks.a))
@@ -30,8 +46,11 @@ int	main(int argc, char **argv)
 		sort_3(&stacks);
 	else if (argc == 6)
 		sort_5(&stacks);
-	printf("\n*************** RESULT ***************\n");
-	list_lenght(stacks.a);
-	printf("cont: %d\n", stacks.cont);
+	else
+		sort_stack(&stacks, lstsize(stacks.a));
+//	printf("\n*************** RESULT ***************\n");
+//	list_lenght(stacks.a);
+	check_if_final_sorted(stacks.a);
+//	printf("cont: %d\n", stacks.cont);
 	clear_stacks(&stacks);
 }
