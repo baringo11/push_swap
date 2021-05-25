@@ -26,25 +26,26 @@ int	*find_chunks(t_lst *stack, int *list, int len)
 	return (list);
 }
 
-int		find_correct_position(t_stacks *stacks, int nb, int len_b)
+int		find_correct_position(t_stacks *stacks, int len_b)
 {
 	t_lst	*aux;
 	int		prev_nb;
 	int		next_nb;
+	int		pos_next_nb;
 
 	aux = stacks->b;
 	prev_nb = -2147483648;
 	next_nb = __INT_MAX__;
 	while (aux)
 	{
-		if (prev_nb < aux->content && aux->content < nb)
+		if (prev_nb < aux->content && aux->content < stacks->a->content)
 			prev_nb = aux->content;
-		if (next_nb > aux->content && aux->content > nb)
+		if (next_nb > aux->content && aux->content > stacks->a->content)
 			next_nb = aux->content;
 		aux = aux->next;
 	}
 	prev_nb = pos_in_list(stacks->b, prev_nb);
-	//next_nb = pos_in_list(stacks->b, next_nb);
+	pos_next_nb = pos_in_list(stacks->b, next_nb);
 	if (prev_nb >= 0)
 	{
 		if (len_b && prev_nb > (len_b / 2))
@@ -57,16 +58,18 @@ int		find_correct_position(t_stacks *stacks, int nb, int len_b)
 			while (prev_nb--)
 				operations(stacks, "rb");
 	}
-	else if (pos_in_list(stacks->b, next_nb) != -1)
+	else if (pos_next_nb >= 0)
 	{
-		while (1)
+		if (pos_next_nb > (len_b / 2))
 		{
-			aux = lstlast(stacks->b);
-			if (aux->content != next_nb)
-				operations(stacks, "rb");
-			else
-				break;
+			pos_next_nb = len_b - pos_next_nb;
+			pos_next_nb--;
+			while (pos_next_nb--)
+				operations(stacks, "rrb");
 		}
+		else
+			while (pos_next_nb--)
+				operations(stacks, "rb");
 	}
 }
 
@@ -74,10 +77,10 @@ void	find_less_moves_chunk(t_stacks *stacks, int *list, int len)
 {
 	int		normal_rotation;
 
-	normal_rotation = find_min_chunk(stacks->a, list[0], list[len]);
+	normal_rotation = find_min_moves_nb_chunk(stacks->a, list[0], list[len]);
 	if (normal_rotation)
 	{
-		while (stacks->a)
+		while (1)
 		{
 			if (stacks->a->content >= list[0] && stacks->a->content <= list[len])
 				return ;
@@ -86,7 +89,7 @@ void	find_less_moves_chunk(t_stacks *stacks, int *list, int len)
 	}
 	else
 	{
-		while (stacks->a)
+		while (1)
 		{
 			if (stacks->a->content >= list[0] && stacks->a->content <= list[len])
 				return ;
@@ -117,7 +120,7 @@ void	sort_stack(t_stacks *stacks, int stack_len)
 			cont += (stack_len / nb_of_chunks);
 		}
 		find_less_moves_chunk(stacks, list, cont - 1);
-		find_correct_position(stacks, stacks->a->content, lstsize(stacks->b));
+		find_correct_position(stacks, lstsize(stacks->b));
 		operations(stacks, "pb");
 		i++;
 	}

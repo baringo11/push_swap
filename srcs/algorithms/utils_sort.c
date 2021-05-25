@@ -1,6 +1,6 @@
 #include "../../includes/push_swap.h"
 
-int	find_min_chunk(t_lst *stack, int min, int max)
+int	find_min_moves_nb_chunk(t_lst *stack, int min, int max)
 {
 	int		i;
 	int		top;
@@ -20,7 +20,7 @@ int	find_min_chunk(t_lst *stack, int min, int max)
 		stack = stack->next;
 	}
 	bottom = i - bottom;
-	if (i <= bottom)
+	if (top <= bottom)
 		return (1);
 	else
 		return (0);

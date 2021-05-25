@@ -23,7 +23,7 @@ typedef struct		s_stacks
 
 int		pos_in_list(t_lst *stack, int n);
 int		find_min_nb(t_lst *stack);
-int		find_min_chunk(t_lst *stack, int min, int max);
+int		find_min_moves_nb_chunk(t_lst *stack, int min, int max);
 
 void	sort_stack(t_stacks *stacks, int stack_len);
 void	sort_5(t_stacks *stacks);

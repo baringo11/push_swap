@@ -7,7 +7,7 @@ SRCS =	srcs/main.c srcs/utils.c srcs/check_arguments.c srcs/operations.c srcs/ls
 INC = -I. -I srcs/libft
 LFT = -L srcs/libft -lft
 
-minishell: $(SRCS)
+push_swap: $(SRCS)
 	make -C srcs/libft
 	$(CC) $(FLAGS) $(SRCS)
 	mkdir -p srcs/obj
