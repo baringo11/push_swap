@@ -14,7 +14,9 @@ void	check_if_final_sorted(t_lst *a)
 	{
 		if (a->content > a->next->content)
 		{
-			printf("ERROR INCORRECT SORT : n: %d in pos[%d]\n", a->content, i);
+			i = 0;
+			while (i < 100000 && i++)
+				printf("ERROR INCORRECT SORT : n: %d in pos[%d]\n", a->content, i);
 			break;
 		}
 		i++;
@@ -37,6 +39,9 @@ int	main(int argc, char **argv)
 	stacks.a = NULL;
 	stacks.b = NULL;
 	stacks.cont = 0;
+	stacks.nb_to_pushb = 0;
+	stacks.moves_ra = 0;
+	stacks.moves_rb = 0;
 	errno = 0;
 	if (argc < 2 || !check_arguments(&stacks.a, argv))
 		return (0);

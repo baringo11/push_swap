@@ -1,5 +1,12 @@
 #include "../includes/push_swap.h"
 
+int		lst_pos_content(t_lst *lst, int pos)
+{
+	while (lst && pos--)
+		lst = lst->next;
+	return (lst->content);
+}
+
 t_lst	*lstlast(t_lst *lst)
 {
 	if (lst)
