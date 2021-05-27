@@ -1,11 +1,4 @@
-#include "../includes/push_swap.h"
-
-int		lst_pos_content(t_lst *lst, int pos)
-{
-	while (lst && pos--)
-		lst = lst->next;
-	return (lst->content);
-}
+#include "../../includes/push_swap.h"
 
 t_lst	*lstlast(t_lst *lst)
 {
@@ -15,21 +8,6 @@ t_lst	*lstlast(t_lst *lst)
 			lst = lst->next;
 	}
 	return (lst);
-}
-
-int lstsize(t_lst *lst)
-{
-	int		i;
-	t_lst	*current;
-
-	i = 0;
-	current = lst;
-	while (current != NULL)
-	{
-		i++;
-		current = current->next;
-	}
-	return (i);
 }
 
 void	lstadd_back(t_lst **alst, t_lst *new)
@@ -53,25 +31,6 @@ void	lstadd_back(t_lst **alst, t_lst *new)
 			}
 		}
 	}
-}
-
-int	list_lenght(t_lst *head)
-{
-	t_lst	*tmp;
-	int		i;
-
-	if (head == NULL)
-		return (0);
-	tmp = head;
-	printf("posicion %d lista: %d\n", 0, tmp->content);
-	i = 1;
-	while (tmp->next != NULL)
-	{
-		tmp = tmp->next;
-		printf("posicion %d lista: %d\n", i, tmp->content);
-		i++;
-	}
-	return (i);
 }
 
 void	lstadd_front(t_lst **lst, t_lst *new)

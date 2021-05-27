@@ -1,35 +1,34 @@
 #include "../../includes/push_swap.h"
 
-int		moves_rotation_b(t_stacks *stacks, int prev_nb, int next_nb, int len_b)
+int		moves_stack_b_2(t_stacks *stacks, int prev_pos, int next_pos, int len_b)
 {
-	t_lst	*aux;
-	int		pos_next_nb;
-
-	pos_next_nb = pos_in_list(stacks->b, next_nb);
-	aux = stacks->b;
-	if (prev_nb >= 0)
+	if (prev_pos >= 0)
 	{
-		if (prev_nb > (len_b / 2))
+		if (prev_pos > (len_b / 2))
 		{
-			stacks->moves_rb = len_b - prev_nb;
+			stacks->tmp_moves_rb = len_b - prev_pos;
 			return (0);
 		}
-		stacks->moves_rb = prev_nb;
+		stacks->tmp_moves_rb = prev_pos;
 		return (1);
 	}
-	aux = lstlast(stacks->b);
-	while (aux->content != next_nb)
+	if (next_pos >= 0)
 	{
-		if (pos_next_nb >= (len_b / 2))
-			operations(stacks, "rrb");
-		else
-			operations(stacks, "rb");
-		aux = lstlast(stacks->b);
+		if (next_pos >= (len_b / 2))
+		{
+			stacks->tmp_moves_rb = len_b - next_pos;
+			stacks->tmp_moves_rb--;
+			return (0);
+		}
+		stacks->tmp_moves_rb = next_pos;
+		stacks->tmp_moves_rb++;
+		return (1);
 	}
-	return (-1);
+	stacks->tmp_moves_rb = 0;
+	return (1);
 }
 
-int		find_correct_pos_in_b(t_stacks *stacks, int len_b)
+int		moves_stack_b(t_stacks *stacks, int len_b)
 {
 	t_lst	*aux;
 	int		prev_nb;
@@ -47,33 +46,22 @@ int		find_correct_pos_in_b(t_stacks *stacks, int len_b)
 		aux = aux->next;
 	}
 	prev_nb = pos_in_list(stacks->b, prev_nb);
-	if (len_b)
-		return (moves_rotation_b(stacks, prev_nb, next_nb, len_b));
-	return (-1);
+	next_nb = pos_in_list(stacks->b, next_nb);
+	return (moves_stack_b_2(stacks, prev_nb, next_nb, len_b));
 }
 
-void	find_less_moves_pb(t_stacks *stacks, int *list, int len)
+void	do_pb(t_stacks *stacks)
 {
-	int		ra;
-	int		rb;
-
-	ra = find_min_moves_nb_chunk(stacks, stacks->a, list[len]);
-	if (ra)
-		stacks->nb_to_pushb = lst_pos_content(stacks->a, stacks->moves_ra);
-	rb = find_correct_pos_in_b(stacks, lstsize(stacks->b));
-	while (stacks->moves_ra > 0 && stacks->moves_rb > 0 && \
-		((ra == 1 && rb == 1) || (ra == 0 && rb == 0)))
-		rotate_both_stacks(stacks, ra, rb);
-	while (stacks->moves_ra > 0 && stacks->moves_ra--)
+	while (stacks->moves_ra[1] > 0 && stacks->moves_ra[1]--)
 	{
-		if (ra)
+		if (stacks->moves_ra[0])
 			operations(stacks, "ra");
 		else
 			operations(stacks, "rra");
 	}
-	while (stacks->moves_rb > 0 && stacks->moves_rb--)
+	while (stacks->moves_rb[1] > 0 && stacks->moves_rb[1]--)
 	{
-		if (rb)
+		if (stacks->moves_rb[0])
 			operations(stacks, "rb");
 		else
 			operations(stacks, "rrb");
@@ -81,50 +69,55 @@ void	find_less_moves_pb(t_stacks *stacks, int *list, int len)
 	operations(stacks, "pb");
 }
 
-void	final_sort(t_stacks *stacks, int *list, int stack_len)
+void	find_less_moves_pb(t_stacks *stacks, int len, int i)
 {
-	int	i;
+	int		ra;
+	int		rb;
 
-	i = pos_in_list(stacks->b, list[0]);
-	if (i > (stack_len / 2))
+	stacks->nb_to_pushb = 0;
+	stacks->index = 0;
+	while (i < len)
 	{
-		i = stack_len - i;
-		i--;
-		while (i--)
-			operations(stacks, "rrb");
+		ra = moves_stack_a(stacks, lstsize(stacks->a));
+		rb = moves_stack_b(stacks, lstsize(stacks->b));
+		check_number_of_moves(stacks, ra, rb);
+		if (stacks->moves_ra[1] == 0 && stacks->moves_rb[1] == 0 || \
+			((stacks->moves_ra[1] + stacks->moves_rb[1]) == 1))
+			break;
+		stacks->index++;
+		i++;
 	}
-	else
-		while (i--)
-			operations(stacks, "rb");
-	while (stacks->b)
-		operations(stacks, "pa");
+	while (stacks->moves_ra[1] > 0 && stacks->moves_rb[1] > 0 && \
+			stacks->moves_ra[0] == stacks->moves_rb[0])
+		rotate_both_stacks(stacks, stacks->moves_ra[0]);
+	do_pb(stacks);
 }
 
 void	sort_stack(t_stacks *stacks, int stack_len)
 {
-	int	*list;
 	int	i;
-	int	nb_of_chunks;
-	int	cont;
 
-	list = (int *)malloc(sizeof(int) * stack_len);
-	if (!list)
-		exit_error(stacks);
-	list = find_chunks(stacks->a, list, stack_len);
-	nb_of_chunks = 5;
-	if (stack_len > 100)
-		nb_of_chunks = 10;
-	cont = (stack_len / nb_of_chunks) + (stack_len % nb_of_chunks);
 	i = 0;
 	while(stacks->a)
 	{
-		if (i == (stack_len / nb_of_chunks) && cont < stack_len )
-		{
-			i = 0;
-			cont += (stack_len / nb_of_chunks);
-		}
-		find_less_moves_pb(stacks, list, cont - 1);
+		find_less_moves_pb(stacks, stack_len, i);
+		stacks->moves_ra[1] = 1000000;
+		stacks->moves_rb[1] = 1000000;
 		i++;
 	}
-	final_sort(stacks, list, stack_len);
+	i = pos_in_list(stacks->b, find_min_nb(stacks->b));
+	if (i > (stack_len / 2))
+	{
+		i = stack_len - (i + 1);
+		while (i--)
+			operations(stacks, "rrb");
+	}
+	else
+	{
+		i++;
+		while (i--)
+			operations(stacks, "rb");
+	}
+	while (stacks->b)
+		operations(stacks, "pa");
 }

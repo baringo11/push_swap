@@ -77,9 +77,7 @@ void	operations(t_stacks *stacks, char *operations)
 	i = -1;
 	while (names[++i])
 	{
-		ft_putstr_fd(names[i], 1);
-		ft_putstr_fd("\n", 1);
-		stacks->cont++;
+		ft_putstr_newline_fd(names[i], 1);
 		if (!ft_strncmp(names[i], "sa", 3) || !ft_strncmp(names[i], "ss", 3))
 			ft_swap(&stacks->a);
 		if (!ft_strncmp(names[i], "sb", 3) || !ft_strncmp(names[i], "ss", 3))
