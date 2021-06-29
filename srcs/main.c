@@ -1,12 +1,12 @@
 #include "../includes/push_swap.h"
-
-// valgrind --leak-check=full \
-// 			--show-leak-kinds=all \
-// 			--track-origins=yes \
-// 			--verbose \
-// 			--log-file=valgrind-out.txt \
-// 			./push_swap
-
+/*
+valgrind --leak-check=full \
+			--show-leak-kinds=all \
+			--track-origins=yes \
+			--verbose \
+			--log-file=valgrind-out.txt \
+			./push_swap
+*/
 void	check_if_final_sorted(t_lst *a)
 {
 	int i = 0;

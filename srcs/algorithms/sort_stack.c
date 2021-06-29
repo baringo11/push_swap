@@ -81,7 +81,7 @@ void	find_less_moves_pb(t_stacks *stacks, int len, int i)
 		ra = moves_stack_a(stacks, lstsize(stacks->a));
 		rb = moves_stack_b(stacks, lstsize(stacks->b));
 		check_number_of_moves(stacks, ra, rb);
-		if (stacks->moves_ra[1] == 0 && stacks->moves_rb[1] == 0 || \
+		if ((stacks->moves_ra[1] == 0 && stacks->moves_rb[1] == 0) || \
 			((stacks->moves_ra[1] + stacks->moves_rb[1]) == 1))
 			break;
 		stacks->index++;

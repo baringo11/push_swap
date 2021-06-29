@@ -1,6 +1,6 @@
 NAME =	push_swap
 CC =	gcc
-FLAGS = -c  -g #-Wall -Wextra -Werror
+FLAGS = -c  -Wall -Wextra -Werror
 OBJS =	$(SRCS:.c=.o)
 SRCS =	srcs/main.c srcs/check_arguments.c srcs/operations.c  \
 		srcs/algorithms/sort_5.c srcs/algorithms/sort_3.c srcs/algorithms/sort_stack.c srcs/algorithms/sort_utils.c \
@@ -15,9 +15,6 @@ push_swap: $(SRCS)
 	mv *.o srcs/obj
 	gcc -o $(NAME) srcs/obj/*.o $(INC) $(LFT)
 
-
-.PHONY: all clean fclean re
-
 all: $(NAME)
 
 clean:
@@ -31,3 +28,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
