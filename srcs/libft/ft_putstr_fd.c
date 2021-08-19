@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaringo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 12:46:01 by jbaringo          #+#    #+#             */
-/*   Updated: 2019/11/26 16:51:06 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 20:09:36 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	size_t i;
+	size_t	i;
 
 	if (s != NULL)
 	{

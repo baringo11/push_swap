@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:27:58 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:27:59 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:33:23 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_repeat_numbers(t_lst **stack_a)
 	{
 		tmp = a;
 		tmp = tmp->next;
-		while(tmp->next)
+		while (tmp->next)
 		{
 			if (a->content == tmp->content)
 				return (error_mesagge(3));
@@ -103,7 +103,7 @@ int	check_arguments(t_lst **stack_a, char **argv)
 		ft_free_matrix(arguments);
 		i++;
 	}
-    if (!check_repeat_numbers(stack_a))
+	if (!check_repeat_numbers(stack_a))
 		return (0);
 	return (1);
 }

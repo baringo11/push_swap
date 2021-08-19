@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaringo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 15:36:39 by jbaringo          #+#    #+#             */
-/*   Updated: 2019/11/15 10:46:28 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 20:09:54 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	char	*src1;
 
 	dst1 = dst;
-	src1 = (char*)src;
+	src1 = (char *)src;
 	i = 0;
 	while (i < n)
 	{

@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:44 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:46 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:49:39 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,28 @@ void	ft_reverse_rotate(t_lst **stack)
 	}
 }
 
-void	operations_checker(t_stacks_checker *stacks, char **operations)
+void	operations_checker(t_stacks_checker *stacks, char **move)
 {
 	int		i;
 
 	i = -1;
-	while (operations[++i])
+	while (move[++i])
 	{
-		if (!ft_strncmp(operations[i], "sa", 3) || !ft_strncmp(operations[i], "ss", 3))
+		if (!ft_strncmp(move[i], "sa", 3) || !ft_strncmp(move[i], "ss", 3))
 			ft_swap(&stacks->a);
-		if (!ft_strncmp(operations[i], "sb", 3) || !ft_strncmp(operations[i], "ss", 3))
+		if (!ft_strncmp(move[i], "sb", 3) || !ft_strncmp(move[i], "ss", 3))
 			ft_swap(&stacks->b);
-		if (!ft_strncmp(operations[i], "pa", 3))
+		if (!ft_strncmp(move[i], "pa", 3))
 			ft_push(stacks, 'a');
-		else if (!ft_strncmp(operations[i], "pb", 3))
+		else if (!ft_strncmp(move[i], "pb", 3))
 			ft_push(stacks, 'b');
-		if (!ft_strncmp(operations[i], "ra", 3) || !ft_strncmp(operations[i], "rr", 3))
+		if (!ft_strncmp(move[i], "ra", 3) || !ft_strncmp(move[i], "rr", 3))
 			ft_rotate(&stacks->a);
-		if (!ft_strncmp(operations[i], "rb", 3) || !ft_strncmp(operations[i], "rr", 3))
+		if (!ft_strncmp(move[i], "rb", 3) || !ft_strncmp(move[i], "rr", 3))
 			ft_rotate(&stacks->b);
-		if (!ft_strncmp(operations[i], "rra", 4) || !ft_strncmp(operations[i], "rrr", 4))
+		if (!ft_strncmp(move[i], "rra", 4) || !ft_strncmp(move[i], "rrr", 4))
 			ft_reverse_rotate(&stacks->a);
-		if (!ft_strncmp(operations[i], "rrb", 4) || !ft_strncmp(operations[i], "rrr", 4))
+		if (!ft_strncmp(move[i], "rrb", 4) || !ft_strncmp(move[i], "rrr", 4))
 			ft_reverse_rotate(&stacks->b);
 	}
 }

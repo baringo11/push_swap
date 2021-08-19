@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaringo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 12:50:12 by jbaringo          #+#    #+#             */
-/*   Updated: 2019/11/23 13:05:08 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 20:09:22 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	size_t i;
+	size_t	i;
 
 	if (s != NULL)
 	{

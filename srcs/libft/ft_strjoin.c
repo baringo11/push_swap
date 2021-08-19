@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaringo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 10:45:34 by jbaringo          #+#    #+#             */
-/*   Updated: 2019/11/25 13:38:49 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 20:17:33 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	j;
-	size_t	i;
-	char	*str;
+	char	*str3;
+	int		i;
+	int		j;
 
+	i = 0;
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	i = ft_strlen(s1);
-	i += ft_strlen(s2);
-	if (!(str = malloc((i + 1) * sizeof(char))))
+	str3 = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!str3)
 		return (NULL);
-	i = 0;
-	while (s1[i])
+	while (s1[i] != '\0')
 	{
-		str[i] = s1[i];
+		str3[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (s2[j])
+	while (s2[j] != '\0')
 	{
-		str[i] = s2[j];
+		str3[i] = s2[j];
 		i++;
 		j++;
 	}
-	str[i] = '\0';
-	return (str);
+	str3[i] = '\0';
+	return (str3);
 }

@@ -6,13 +6,13 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 14:01:11 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:59 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:52:16 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		next_line(char **text, char **line)
+int	next_line(char **text, char **line)
 {
 	int		i;
 	char	*tmp;
@@ -37,7 +37,7 @@ int		next_line(char **text, char **line)
 	return (1);
 }
 
-int		check(int fd, int t_read, char **text, char **line)
+int	check(int fd, int t_read, char **text, char **line)
 {
 	if (t_read < 0)
 		return (-1);
@@ -50,7 +50,7 @@ int		check(int fd, int t_read, char **text, char **line)
 		return (next_line(&text[fd], line));
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	int				t_read;
 	char			buff[201];
@@ -59,7 +59,8 @@ int		get_next_line(int fd, char **line)
 
 	if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, buff, 0) < 0)
 		return (-1);
-	while ((t_read = read(fd, buff, 200)) > 0)
+	t_read = read(fd, buff, 200);
+	while (t_read > 0)
 	{
 		buff[t_read] = '\0';
 		if (text[fd] == NULL)
@@ -72,6 +73,7 @@ int		get_next_line(int fd, char **line)
 		}
 		if (ft_strchr(text[fd], '\n'))
 			break ;
+		t_read = read(fd, buff, 200);
 	}
 	return (check(fd, t_read, text, line));
 }

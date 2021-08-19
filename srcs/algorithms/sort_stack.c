@@ -6,13 +6,13 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:22 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:23 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:39:36 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int		moves_stack_b_2(t_stacks *stacks, int prev_pos, int next_pos, int len_b)
+int	moves_stack_b_2(t_stacks *stacks, int prev_pos, int next_pos, int len_b)
 {
 	if (prev_pos >= 0)
 	{
@@ -40,7 +40,7 @@ int		moves_stack_b_2(t_stacks *stacks, int prev_pos, int next_pos, int len_b)
 	return (1);
 }
 
-int		moves_stack_b(t_stacks *stacks, int len_b)
+int	moves_stack_b(t_stacks *stacks, int len_b)
 {
 	t_lst	*aux;
 	int		prev_nb;
@@ -95,7 +95,7 @@ void	find_less_moves_pb(t_stacks *stacks, int len, int i)
 		check_number_of_moves(stacks, ra, rb);
 		if ((stacks->moves_ra[1] == 0 && stacks->moves_rb[1] == 0) || \
 			((stacks->moves_ra[1] + stacks->moves_rb[1]) == 1))
-			break;
+			break ;
 		stacks->index++;
 		i++;
 	}
@@ -110,7 +110,7 @@ void	sort_stack(t_stacks *stacks, int stack_len)
 	int	i;
 
 	i = 0;
-	while(stacks->a)
+	while (stacks->a)
 	{
 		find_less_moves_pb(stacks, stack_len, i);
 		stacks->moves_ra[1] = 1000000;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaringo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 09:51:30 by jbaringo          #+#    #+#             */
-/*   Updated: 2019/11/26 11:56:06 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 20:13:13 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ t_list	*ft_lstnew(void const *content)
 {
 	t_list	*head;
 
-	if (!(head = (t_list*)malloc(sizeof(t_list))))
+	head = (t_list *)malloc(sizeof(t_list));
+	if (!head)
 		return (NULL);
-	head->content = (void*)content;
+	head->content = (void *)content;
 	head->next = NULL;
 	return (head);
 }

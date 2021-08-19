@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcup.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaringo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:25:54 by jbaringo          #+#    #+#             */
-/*   Updated: 2019/11/21 16:13:02 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 20:05:54 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*ft_strdup(const char *s1)
 	while (s1[i])
 		i++;
 	i++;
-	if (!(s = malloc(i * sizeof(char))))
+	s = malloc(i * sizeof(char));
+	if (!s)
 		return (NULL);
 	i = 0;
 	while (s1[i])

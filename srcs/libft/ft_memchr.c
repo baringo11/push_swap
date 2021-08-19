@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaringo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 13:14:56 by jbaringo          #+#    #+#             */
-/*   Updated: 2019/11/27 14:43:25 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 20:03:57 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	*p;
 	size_t			i;
 
-	p = (unsigned char*)s;
+	p = (unsigned char *)s;
 	i = 0;
 	while (n--)
 	{

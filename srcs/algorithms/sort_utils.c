@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:27 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:28 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:40:04 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	check_number_of_moves(t_stacks *stacks, int ra, int rb)
 {
-	int tmp_total_moves;
-	int total_moves;
+	int	tmp_total_moves;
+	int	total_moves;
 
 	total_moves = stacks->moves_ra[1] + stacks->moves_rb[1];
 	tmp_total_moves = stacks->tmp_moves_ra + stacks->tmp_moves_rb;
@@ -85,7 +85,7 @@ int	find_min_nb(t_lst *stack)
 	return (min_nb);
 }
 
-int		pos_in_list(t_lst *stack, int n)
+int	pos_in_list(t_lst *stack, int n)
 {
 	int		i;
 

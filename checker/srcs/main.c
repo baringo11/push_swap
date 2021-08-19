@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:42 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:43 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:43:25 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_stacks_checker stacks;
+	t_stacks_checker	stacks;
 
 	stacks.a = NULL;
 	stacks.b = NULL;

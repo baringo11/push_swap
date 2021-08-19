@@ -6,13 +6,13 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:47 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:48 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:44:08 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 
-int		check_instruction(char *line)
+int	check_instruction(char *line)
 {
 	if (!ft_strncmp(line, "sa", 3) || !ft_strncmp(line, "sb", 3) \
 		|| !ft_strncmp(line, "ss", 3) || !ft_strncmp(line, "pa", 3) \
@@ -26,8 +26,8 @@ int		check_instruction(char *line)
 
 int	read_instructions(t_stacks_checker *stacks)
 {
-	char *line;
-	char **instructions;
+	char	*line;
+	char	**instructions;
 
 	instructions = NULL;
 	while (get_next_line(0, &line) && line[0] != '\0')

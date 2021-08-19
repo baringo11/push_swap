@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:16 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:17 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:38:06 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 void	sort_3(t_stacks *stacks)
 {
-	int first;
-	int second;
-	int third;
+	int	first;
+	int	second;
+	int	third;
 
 	first = (stacks->a->content > stacks->a->next->content);
 	second = (stacks->a->next->content > stacks->a->next->next->content);
 	third = (stacks->a->next->next->content > stacks->a->content);
-
 	if (first + second + third == 2)
 		operations(stacks, "sa");
 	if (check_if_sorted(stacks->a))

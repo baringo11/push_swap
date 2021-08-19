@@ -6,20 +6,20 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:03 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:04 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:40:41 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int lst_pos_content(t_lst *lst, int pos)
+int	lst_pos_content(t_lst *lst, int pos)
 {
 	while (lst && pos--)
 		lst = lst->next;
 	return (lst->content);
 }
 
-int lstsize(t_lst *lst)
+int	lstsize(t_lst *lst)
 {
 	int		i;
 	t_lst	*current;
@@ -34,7 +34,7 @@ int lstsize(t_lst *lst)
 	return (i);
 }
 
-int		check_if_sorted(t_lst *stack)
+int	check_if_sorted(t_lst *stack)
 {
 	while (stack->next)
 	{

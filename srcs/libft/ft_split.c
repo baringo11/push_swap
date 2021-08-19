@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaringo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 15:12:49 by jbaringo          #+#    #+#             */
-/*   Updated: 2019/12/02 10:13:50 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 20:02:54 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int				ft_isspace(char str, char c)
+int	ft_isspace(char str, char c)
 {
 	if (str == c)
 		return (0);
@@ -20,7 +20,7 @@ int				ft_isspace(char str, char c)
 		return (1);
 }
 
-int				count_words(const char *str, char c)
+int	count_words(const char *str, char c)
 {
 	int		count;
 
@@ -39,7 +39,7 @@ int				count_words(const char *str, char c)
 	return (count);
 }
 
-char			*malloc_word(const char *str, char c)
+char	*malloc_word(const char *str, char c)
 {
 	char	*word;
 	int		i;
@@ -47,7 +47,8 @@ char			*malloc_word(const char *str, char c)
 	i = 0;
 	while (str[i] && ft_isspace(str[i], c) == 1)
 		i++;
-	if (!(word = (char *)malloc(sizeof(char) * (i + 1))))
+	word = (char *)malloc(sizeof(char) * (i + 1));
+	if (!word)
 		return (NULL);
 	i = 0;
 	while (str[i] && ft_isspace(str[i], c) == 1)
@@ -59,9 +60,9 @@ char			*malloc_word(const char *str, char c)
 	return (word);
 }
 
-static void		*free_arr(char **arr)
+static void	*free_arr(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i] != NULL)
@@ -70,14 +71,15 @@ static void		*free_arr(char **arr)
 	return (NULL);
 }
 
-char			**ft_split(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**arr;
 	int		i;
 
 	if (s == NULL)
 		return (NULL);
-	if (!(arr = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1))))
+	arr = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
+	if (!arr)
 		return (NULL);
 	i = 0;
 	while (*s)
@@ -86,7 +88,8 @@ char			**ft_split(const char *s, char c)
 			s++;
 		if (*s && ft_isspace(*s, c) == 1)
 		{
-			if ((arr[i] = malloc_word(s, c)) == NULL)
+			arr[i] = malloc_word(s, c);
+			if (!arr[i])
 				return (free_arr(arr));
 			i++;
 			while (*s && ft_isspace(*s, c) == 1)

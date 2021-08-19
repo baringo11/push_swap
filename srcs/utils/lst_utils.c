@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:05 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:06 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:41:26 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ t_lst	*lstnew(int content)
 {
 	t_lst	*head;
 
-	if (!(head = (t_lst *)malloc(sizeof(t_lst))))
+	head = (t_lst *)malloc(sizeof(t_lst));
+	if (!head)
 		return (NULL);
 	head->content = content;
 	head->next = NULL;

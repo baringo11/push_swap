@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:19 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:20 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:38:53 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,31 @@
 
 void	bigger_than_first(t_stacks *stacks)
 {
-	if (stacks->b->next->content > stacks->a->content) //mayor que el 1
+	if (stacks->b->next->content > stacks->a->content)
 		operations(stacks, "ra pa pa rra");
-	else //menor que el 1
+	else
 		operations(stacks, "ra pa rra pa");
 }
 
 void	bigger_than_second(t_stacks *stacks)
 {
-	if (stacks->b->next->content > stacks->a->next->content) //mayor que el 2
+	if (stacks->b->next->content > stacks->a->next->content)
 		operations(stacks, "rra pa pa rra rra");
-	else if (stacks->b->next->content > stacks->a->content) //mayor que el 1
+	else if (stacks->b->next->content > stacks->a->content)
 		operations(stacks, "rra pa rra pa rra");
-	else //menor que el 1
+	else
 		operations(stacks, "rra pa ra ra pa");
 }
 
 void	bigger_than_third(t_stacks *stacks)
 {
-	if (stacks->b->next->content > stacks->a->next->next->content) //mayor que el 3
+	if (stacks->b->next->content > stacks->a->next->next->content)
 		operations(stacks, "pa pa ra ra");
-	else if (stacks->b->next->content > stacks->a->next->content) //mayor que el 2
+	else if (stacks->b->next->content > stacks->a->next->content)
 		operations(stacks, "pa rra pa rra rra");
-	else if (stacks->b->next->content > stacks->a->content) //mayor que el 1
+	else if (stacks->b->next->content > stacks->a->content)
 		operations(stacks, "pa ra ra pa rra");
-	else //menor que el 1
+	else
 		operations(stacks, "pa ra pa");
 }
 
@@ -48,12 +48,12 @@ void	sort_5(t_stacks *stacks)
 	sort_3(stacks);
 	if (stacks->b->content < stacks->b->next->content)
 		operations(stacks, "sb");
-	if (stacks->b->content > stacks->a->next->next->content) //mayor que el 3
+	if (stacks->b->content > stacks->a->next->next->content)
 		bigger_than_third(stacks);
-	else if (stacks->b->content > stacks->a->next->content) //mayor que el 2
+	else if (stacks->b->content > stacks->a->next->content)
 		bigger_than_second(stacks);
-	else if (stacks->b->content > stacks->a->content) //mayor que el 1
+	else if (stacks->b->content > stacks->a->content)
 		bigger_than_first(stacks);
-	else //menor que el 1
+	else
 		operations(stacks, "pa pa");
 }

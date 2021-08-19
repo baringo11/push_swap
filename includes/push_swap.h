@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:30:30 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:30:31 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:57:09 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 # include <errno.h>
 # include "../srcs/libft/libft.h"
 
-typedef struct		s_lst
+typedef struct s_lst
 {
 	int				content;
 	struct s_lst	*next;
 }					t_lst;
 
-typedef struct		s_stacks
+typedef struct s_stacks
 {
 	struct s_lst	*a;
 	struct s_lst	*b;

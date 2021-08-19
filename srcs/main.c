@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:27:32 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:27:33 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/08/19 19:43:02 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ valgrind --leak-check=full \
 */
 void	check_if_final_sorted(t_lst *a)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (a->next)
 	{
 		if (a->content > a->next->content)
@@ -29,7 +31,7 @@ void	check_if_final_sorted(t_lst *a)
 			i = 0;
 			while (i++ < 10000)
 				printf("ERROR INCORRECT SORT : n: %d in pos[%d]\n", a->content, i);
-			break;
+			break ;
 		}
 		i++;
 		a = a->next;
@@ -52,7 +54,7 @@ void	initializate_variables(t_stacks *stacks)
 
 int	main(int argc, char **argv)
 {
-	t_stacks stacks;
+	t_stacks	stacks;
 
 	initializate_variables(&stacks);
 	if (argc < 2 || !check_arguments(&stacks.a, argv))
