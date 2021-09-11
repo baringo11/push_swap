@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:22 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:39:36 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/09/10 19:57:05 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,18 @@ void	do_pb(t_stacks *stacks)
 	while (stacks->moves_ra[1] > 0 && stacks->moves_ra[1]--)
 	{
 		if (stacks->moves_ra[0])
-			operations(stacks, "ra");
+			operations(stacks, "ra", -1);
 		else
-			operations(stacks, "rra");
+			operations(stacks, "rra", -1);
 	}
 	while (stacks->moves_rb[1] > 0 && stacks->moves_rb[1]--)
 	{
 		if (stacks->moves_rb[0])
-			operations(stacks, "rb");
+			operations(stacks, "rb", -1);
 		else
-			operations(stacks, "rrb");
+			operations(stacks, "rrb", -1);
 	}
-	operations(stacks, "pb");
+	operations(stacks, "pb", -1);
 }
 
 void	find_less_moves_pb(t_stacks *stacks, int len, int i)
@@ -122,14 +122,14 @@ void	sort_stack(t_stacks *stacks, int stack_len)
 	{
 		i = stack_len - (i + 1);
 		while (i--)
-			operations(stacks, "rrb");
+			operations(stacks, "rrb", -1);
 	}
 	else
 	{
 		i++;
 		while (i--)
-			operations(stacks, "rb");
+			operations(stacks, "rb", -1);
 	}
 	while (stacks->b)
-		operations(stacks, "pa");
+		operations(stacks, "pa", -1);
 }

@@ -6,11 +6,17 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 14:01:11 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:52:16 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/09/11 19:50:45 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	*free_ptr(char *ptr)
+{
+	free(ptr);
+	return (NULL);
+}
 
 int	next_line(char **text, char **line)
 {
@@ -26,6 +32,8 @@ int	next_line(char **text, char **line)
 		tmp = ft_strdup(&(*text)[i + 1]);
 		free(*text);
 		*text = tmp;
+		if ((*text)[0] == '\0')
+			*text = free_ptr(*text);
 	}
 	else
 	{

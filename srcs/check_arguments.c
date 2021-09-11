@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:27:58 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:33:23 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/09/10 20:00:25 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,10 @@ int	check_arguments(t_lst **stack_a, char **argv)
 	{
 		arguments = ft_split(argv[i], ' ');
 		if (!check_numbers(stack_a, arguments))
+		{
+			ft_free_matrix(arguments);
 			return (0);
+		}
 		ft_free_matrix(arguments);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:47 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:44:08 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/09/10 20:43:15 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,17 @@ int	read_instructions(t_stacks_checker *stacks)
 		if (check_instruction(line))
 		{
 			ft_putstr_fd("Error\n", 2);
+			if (instructions)
+				instructions = ft_free_matrix(instructions);
+			free(line);
 			return (1);
 		}
 		instructions = add_new_pos_matrix(instructions, line);
+		free(line);
 	}
 	if (instructions)
 		operations_checker(stacks, instructions);
+	free(line);
+	instructions = ft_free_matrix(instructions);
 	return (0);
 }

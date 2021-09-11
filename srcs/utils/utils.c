@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:08 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:28:09 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/09/11 19:54:59 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 void	ft_putstr_newline_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	write(fd, "\n", fd);
 }
 
 void	exit_error(t_stacks *stacks)
 {
 	clear_stacks(stacks);
-	ft_putstr_newline_fd(strerror(errno), 2);
+	ft_putstr_fd(strerror(errno), 2);
+	ft_putstr_fd("\n", 2);
 }
 
 void	clear_stacks(t_stacks *stacks)
@@ -51,7 +52,7 @@ void	*ft_free_matrix(char **matrix)
 	int		i;
 
 	i = 0;
-	while (matrix[i])
+	while (matrix && matrix[i])
 	{
 		if (matrix[i] != NULL)
 			matrix[i] = ft_free_ptr(matrix[i]);

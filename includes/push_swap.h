@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:30:30 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:57:09 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/09/10 19:54:57 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_stacks
 	int				index;
 }					t_stacks;
 
-void	operations(t_stacks *stacks, char *operations);
+void	operations(t_stacks *stacks, char *operations, int i);
 int		check_arguments(t_lst **stack_a, char **argv);
 
 /* algorithms */

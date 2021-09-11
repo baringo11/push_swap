@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:27:52 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:27:53 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/09/10 19:54:42 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,11 @@ void	ft_reverse_rotate(t_lst **stack)
 	}
 }
 
-void	operations(t_stacks *stacks, char *operations)
+void	operations(t_stacks *stacks, char *operations, int i)
 {
 	char	**names;
-	int		i;
 
 	names = ft_split(operations, ' ');
-	i = -1;
 	while (names[++i])
 	{
 		ft_putstr_newline_fd(names[i], 1);
@@ -107,4 +105,5 @@ void	operations(t_stacks *stacks, char *operations)
 		if (!ft_strncmp(names[i], "rrb", 4) || !ft_strncmp(names[i], "rrr", 4))
 			ft_reverse_rotate(&stacks->b);
 	}
+	names = ft_free_matrix(names);
 }

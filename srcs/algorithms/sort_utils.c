@@ -6,7 +6,7 @@
 /*   By: jbaringo <jbaringo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 19:28:27 by jbaringo          #+#    #+#             */
-/*   Updated: 2021/08/19 19:40:04 by jbaringo         ###   ########.fr       */
+/*   Updated: 2021/09/10 19:57:22 by jbaringo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	check_number_of_moves(t_stacks *stacks, int ra, int rb)
 void	rotate_both_stacks(t_stacks *stacks, int normal_rotation)
 {
 	if (normal_rotation == 1)
-		operations(stacks, "rr");
+		operations(stacks, "rr", -1);
 	else if (normal_rotation == 0)
-		operations(stacks, "rrr");
+		operations(stacks, "rrr", -1);
 	stacks->moves_ra[1]--;
 	stacks->moves_rb[1]--;
 }
